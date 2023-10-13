@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,18 @@ export class LoginPage implements OnInit {
 // tambien se puede utlizar los datos creando un objeto, en este caso form
 // lleva los atributos rut y password para luego llamarlos desde otra page
   formlogin={
-    rut:"",
+    correo:"",
     password:""
   }
 
   //rut: string="" se puede utilizar así  o con un formLogin
   //password: string=""
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private storage: Storage) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.create();
+
   }
 
   iniciarSesion()
@@ -27,12 +31,12 @@ export class LoginPage implements OnInit {
 
     //console.log("rut" + this.rut) para ver la variable (sin utilizar el form)
     //console.log("password" + this.password)
-    console.log("password" + this.formlogin.rut)
+    console.log("password" + this.formlogin.correo)
     console.log("password" + this.formlogin.password)
     
     //se crea let para agrupar o seleccionar los datos que se usatan en otra page
     let datosEnviar : NavigationExtras = {
-      queryParams : {rutUsuario:this.formlogin.rut,
+      queryParams : {correoUsuario:this.formlogin.correo,
       edad:24 }
     }
     //metodo navigate nos da la opcion de ir a otra page dentro del boton iniciar sesion
@@ -41,6 +45,19 @@ export class LoginPage implements OnInit {
 
     this.router.navigate(['/home'], datosEnviar);
 
+    // guardar informacion en storage
+    this.storage.set("nombreUsuario", "Sebastian") 
+    
+
+
+  }
+  olvidoContrasena(){
+
+    let olvido : NavigationExtras = {
+      queryParams : {correoUsuario: this.formlogin.correo}
+    }
+
+    this.router.navigate(['/olvidoContrasena'], olvido);
 
   }
 

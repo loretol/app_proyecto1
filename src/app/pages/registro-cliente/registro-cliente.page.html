@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-avatar slot="start">
+      <ion-img src="../../../assets/imagenes/Logopelu.jpg"></ion-img>
+    </ion-avatar>
+  <ion-title class="titulo-centrado">Registro de Clientes</ion-title>
+   
+</ion-toolbar>
+</ion-header>
+<ion-content>
+<br>
+<ion-avatar class="custom-center">
+  <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+</ion-avatar>
+<br>
+<ion-item class="botones">
+  <ion-button class="custom-center" shape="block" shape="round">Cargar Foto</ion-button>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Rut:</ion-label>
+  <ion-input type="text" [(ngModel)]="rut" placeholder="Ingrese su Rut"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Nombre:</ion-label>
+  <ion-input type="text" [(ngModel)]="nombre" placeholder="Ingrese su Nombre"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Apellido Paterno:</ion-label>
+  <ion-input type="text" [(ngModel)]="apaterno" placeholder="Ingrese su Apellido Paterno"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Apellido Materno:</ion-label>
+  <ion-input type="text" [(ngModel)]="amaterno" placeholder="Ingrese su Apellido Materno"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Edad:</ion-label>
+  <ion-input type="text" [(ngModel)]="edad" placeholder="Ingrese su Edad"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Dirección:</ion-label>
+  <ion-input type="text" [(ngModel)]="direccion" placeholder="Ingrese su Dirección"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Teléfono:</ion-label>
+  <ion-input type="text" [(ngModel)]="telefono" placeholder="Ingrese su Teléfono"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Email:</ion-label>
+  <ion-input type="text" [(ngModel)]="email" placeholder="Ingrese su Email"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Nombre Usuario:</ion-label>
+  <ion-input type="text" [(ngModel)]="nomUsuario" placeholder="Ingrese Nombre Usuario"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="stacked">Contraseña</ion-label>
+  <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+</ion-item>
+<ion-button (click)="clienteAgregadoExitosamente()" expand="full" >Registrar</ion-button>
+</ion-content>
+

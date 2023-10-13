@@ -3,3 +3,51 @@
     --color: white;
 
 }
+.background {
+    --background: url(../../../assets/imagenes/portada.png) 0 0/100% 100% no-repeat;
+}
+
+ion-grid {
+    height: 100%;
+}
+
+ion-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+ion-item{
+    margin: 20px;
+}
+
+.botones{
+    --background: transparent;  
+}
+
+ion-input{
+    border-radius: 200px;
+}
+
+.rounded-box {
+    border-radius: 20px; 
+}
+
+ion-button { 
+    --background: turquoise;
+    --color: white;
+}
+
+.custom-center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  ion-loading.custom-loading {
+    --background: #e3edff;
+    --spinner-color: #1c6dff;
+  
+    color: #1c6dff;
+  }  
+  

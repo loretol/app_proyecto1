@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -12,18 +12,23 @@ export class HomePage implements OnInit {
 
 mensaje: string="";
 //se crea rutaActiva para recibir los datos
-  constructor(private rutaActiva : ActivatedRoute) {
+  constructor(private rutaActiva : ActivatedRoute,private storage: Storage) {
 // este metodo se utliza para retornar la información
     this.rutaActiva.queryParams.subscribe(params =>{
       //luego se valida que la variable mensaje no venga vacio
-      if(params['rutUsuario'])
+      if(params['correoUsuario'])
       {
-        this.mensaje= params['rutUsuario']
+        this.mensaje= params['correoUsuario']
       }
     })
    }
 
-  ngOnInit() {
+  ngOnInit() { 
+  }
+//se llama la información que se guardo en el storage con el metodo get 
+  async verStorage(){
+    let nombre= await this.storage.get("nombreUsuario");
+    console.log("el nombre guardado es "+ nombre)
   }
 
 }

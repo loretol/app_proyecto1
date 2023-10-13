@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PageProtegidoGuard } from './guards/page-protegido.guard';
 
 const routes: Routes = [
   
@@ -22,9 +23,21 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+    path: 'registro-cliente',
+    loadChildren: () => import('./pages/registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
   },
+  {
+    path: 'not-foun',
+    loadChildren: () => import('./pages/not-found/not-foun.module').then( m => m.NotFounPageModule)
+  },
+  // se debe dejar el path de not-found al final 
+
+  {
+    path: '**',
+    redirectTo: 'not-foun',
+    pathMatch: 'full'
+  },
+  
 ];
 
 @NgModule({
