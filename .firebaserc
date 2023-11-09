@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "salonproyect"
+  },
+  "targets": {
+    "salonproyect": {
+      "hosting": {
+        "app": [
+          "salonproyect"
+        ]
+      }
+    }
   }
 }

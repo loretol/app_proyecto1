@@ -1,6 +1,16 @@
 {
   "firestore": {
-    "rules": "firestore.rules",
+    "rules": "firestore.rule",
     "indexes": "firestore.indexes.json"
+  },
+  "hosting": [
+    {
+      "target": "app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ],
+  "storage": {
+    "rules": "storage.rules"
   }
 }
