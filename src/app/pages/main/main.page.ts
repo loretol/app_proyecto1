@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { UtilsService } from 'src/app/services/utils.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private firebaseService: FirebaseService,
+    private utilservice: UtilsService) { }
+
+  pages = [
+    {title:'Inicio', url: '/main/home', icon: 'home-outline'},
+    {title:'Perfil', url: '/main/profile', icon: 'person-outline'},
+  ]
+  currentPath: string = '';
 
   ngOnInit() {
+    this.router.events.subscribe((event:any)=> {
+      if(event?.url) this.currentPath= event.url;
+    })
   }
+
+   //==== Cerrar sesion======
+   singOut() {
+    this.firebaseService.signOut();
+  }
+  user(): User {
+    return this.utilservice.getFromLocalStorage('user');
+  }
+
+
 
 }

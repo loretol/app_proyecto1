@@ -9,8 +9,9 @@ import { UtilsService } from '../services/utils.service';
 })
 export class AuthGuard implements CanActivate {
 
-  firebaseSvc = inject(FirebaseService);
-  utilSvc = inject(UtilsService);
+  constructor(
+    private firebaseService: FirebaseService,
+    private utilservice:UtilsService){}
 
 
 
@@ -25,13 +26,13 @@ export class AuthGuard implements CanActivate {
 
 
     return new Promise((resolve) => {
-      this.firebaseSvc.getAuth().onAuthStateChanged((auth) => {
+      this.firebaseService.getAuth().onAuthStateChanged((auth) => {
 
         if (auth) {
           if (user) resolve(true)
         }
         else {
-          this.utilSvc.routerLink('/auth');
+          this.firebaseService.signOut();
           resolve(false);
         }
       })

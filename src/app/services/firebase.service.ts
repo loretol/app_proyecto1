@@ -1,15 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, getDoc, getDocs, getFirestore, setDoc } from '@angular/fire/firestore';
-
-import { Observable } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, addDoc, doc, getDoc, getFirestore, setDoc, collectionData, query, updateDoc,deleteDoc } from '@angular/fire/firestore';
 import {
   updateProfile, Auth, createUserWithEmailAndPassword, sendPasswordResetEmail,
-  signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, getAuth, updateCurrentUser
+  signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, getAuth
 } from '@angular/fire/auth';
 import { User } from '../models/user.model';
 import { UtilsService } from './utils.service';
-import{getStorage, uploadString, ref,getDownloadURL} from "@angular/fire/storage"
-
+import { getStorage, uploadString, ref, getDownloadURL, Storage,deleteObject} from "@angular/fire/storage"
 
 
 
@@ -19,8 +16,9 @@ import{getStorage, uploadString, ref,getDownloadURL} from "@angular/fire/storage
   providedIn: 'root'
 })
 export class FirebaseService {
+
   constructor(private firestore: Firestore, private auth: Auth,
-     private utilservice: UtilsService) {
+    private utilservice: UtilsService, private storage: Storage = inject(Storage)) {
 
 
 
@@ -62,12 +60,32 @@ export class FirebaseService {
 
   //**************************** Base de datos *****************************
 
+  //====== obtener documentos de una colección ======
+
+  getCollectionData(path: string, collectioQuery?: any) {
+    const ref = collection(getFirestore(), path);
+    return collectionData(query(ref, collectioQuery), { idField: 'id' })
+
+  }
+
   //====== setear un documento======
 
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
 
   }
+    //====== actualizar un documento======
+
+    updateDocument(path: string, data: any) {
+      return updateDoc(doc(getFirestore(), path), data);
+  
+    }
+    //====== eliminar un documento======
+
+    deletDocument(path: string) {
+      return deleteDoc(doc(getFirestore(), path));
+  
+    }
   //====== obtener un documento =====
 
   async getDocument(path: string) {
@@ -81,10 +99,31 @@ export class FirebaseService {
   }
   //========================== Almacenamiento ============================
 
-   async uploadImage(path: string, data_url:string){
-    return uploadString(ref(getStorage(),path),data_url,'data_url').then(()=>{
-      return getDownloadURL(ref(getStorage(),path))
+  //======= subir una imagen ========
+
+  async uploadImage(path: string, data_url: string) {
+    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
+      return getDownloadURL(ref(getStorage(), path))
     })
-    
+
+  }
+
+  //====== obtener ruta de imagen con url=======
+   async getFilepath(url: string) {
+    return ref(getStorage(), url).fullPath
+
+  }
+
+  //====== eliminar archivo======
+  deleteFile(path: string){
+    return deleteObject(ref(getStorage(),path));
+
+  }
+
+
+
+ //======= login con google=======
+  loginWhitGoogle(){
+    return signInWithPopup(this.auth, new GoogleAuthProvider ())
   }
 }

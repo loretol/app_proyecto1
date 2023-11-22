@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
+import { AlertController, AlertOptions, LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,9 @@ export class UtilsService {
     private loadingcontroller: LoadingController,
     private toastController: ToastController,
     private router: Router,
-    private modalControler: ModalController) { }
+    private modalControler: ModalController,
+    private alertCtrl: AlertController
+    ) { }
 
 
     
@@ -69,8 +71,12 @@ async takePicture (promptLabelHeader: string){
     return this.modalControler.dismiss(data)
   }
 
-
-
+// ======= alerta =========
+ async presentAlert(opts?: AlertOptions) {
+  const alert = await this.alertCtrl.create(opts);
+ 
+  await alert.present();
+ }
 
 
 }

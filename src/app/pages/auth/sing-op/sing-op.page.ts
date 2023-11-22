@@ -77,7 +77,7 @@ export class SingOpPage implements OnInit {
       .then( async res =>{
 
 
-        this.utilservice.saveInLocalStorage('user', this.form.value)
+        //this.utilservice.saveInLocalStorage('user', this.form.value)
         this.utilservice.routerLink('/main/home');
         this.form.reset();
        

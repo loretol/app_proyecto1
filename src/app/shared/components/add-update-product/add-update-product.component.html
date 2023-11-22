@@ -1,4 +1,4 @@
-<app-header [isModal]="true" title="Agregar Producto"></app-header>
+<app-header [isModal]="true" [title]=" product ? 'Actualizar producto' : 'Agregar Producto' "></app-header>
 <ion-content>
   <form [formGroup]="form" class="ion-paddong ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
@@ -20,7 +20,12 @@
     </ion-button>
 
     <!--=========nombre=========-->
-    <app-custom-input autocomplete="name" [control]="form.controls.name" type="text" label="Nombre"></app-custom-input>
+    <app-custom-input
+     autocomplete="name" 
+     [control]="form.controls.name" 
+     type="text"
+     label="Nombre"
+     ></app-custom-input>
 
 
     <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
@@ -28,15 +33,27 @@
       <div *ngIf="form.controls.name.errors?.['minlenght']">el nombre debe tener mas de 4 caracteres</div>
     </div>
 
-    <app-custom-input [control]="form.controls.price" type="number" label="Precio"></app-custom-input>
+
+<!--========= precio =========-->
+    <app-custom-input 
+    [control]="form.controls.price" 
+    type="number" 
+    label="Precio"
+    (ionInput)="setNumberInput()"
+    ></app-custom-input>
 
 
     <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
       <div *ngIf="form.controls.price.errors?.['required']">Este campo es requerido</div>
       <div *ngIf="form.controls.price.errors?.['min']">El precio mínimo debe ser 0</div>
     </div>
-
-    <app-custom-input [control]="form.controls.soldUnits" type="number" label="Unidad Vendidas"></app-custom-input>
+<!--========= unidades vendidas=========-->
+    <app-custom-input 
+    [control]="form.controls.soldUnits" 
+    type="number" 
+    label="Unidad Vendidas"
+    (ionInput)="setNumberInput()"
+    ></app-custom-input>
 
 
     <div class="validators" *ngIf="form.controls.soldUnits.errors && form.controls.soldUnits.touched">
@@ -48,7 +65,7 @@
 
 
     <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
-      Agregar producto
+      {{product ? 'Actualizar producto' : 'Agregar Producto'}}
       <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
     </ion-button>
 
