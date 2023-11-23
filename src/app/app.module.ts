@@ -10,6 +10,9 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { GoogleMap } from '@capacitor/google-maps';
+import { CapacitorGoogleMaps } from '@capacitor-community/google-maps';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -20,9 +23,11 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent] ,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, 
-    IonicModule.forRoot({mode:'md'}),
+    IonicModule.forRoot({mode:'md'}),// para que tenga el mismo diseño en todos los sistemas operativos 
     AppRoutingModule, IonicStorageModule.forRoot(),
+    
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()), provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),

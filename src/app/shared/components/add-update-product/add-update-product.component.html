@@ -15,7 +15,7 @@
     </ion-avatar>
 
     <!--==== tomar o seleccionar imagen=====-->
-    <ion-button (click)="takeImage()" size="small" model="ios" shape="round">
+    <ion-button (click)="takeImage()" size="small" model="ios" shape="round" style="--background: rgb(48, 174, 179);">
       Tomar/Seleccionar
     </ion-button>
 
@@ -64,7 +64,7 @@
 
 
 
-    <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
+    <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid" >
       {{product ? 'Actualizar producto' : 'Agregar Producto'}}
       <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
     </ion-button>

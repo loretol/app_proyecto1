@@ -16,6 +16,8 @@ export class MainPage implements OnInit {
   pages = [
     {title:'Inicio', url: '/main/home', icon: 'home-outline'},
     {title:'Perfil', url: '/main/profile', icon: 'person-outline'},
+    {title:'Ubicación', url: '/main/location', icon: 'location-outline'},
+    {title:'Codigo QR', url: '/main/cod-qr', icon: 'qr-code-outline'},
   ]
   currentPath: string = '';
 

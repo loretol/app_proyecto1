@@ -8,3 +8,10 @@ ion-avatar{
     --border-radius: 15px;
     margin: 0 auto;
 }
+ion-button { 
+    --background: rgb(48, 174, 179);
+    --background-activated:rgb(17, 119, 123);
+    --color: white;
+    --background-activated-opacity:rgb(17, 119, 123);
+    --background-focused :rgb(17, 119, 123);
+}

@@ -75,7 +75,7 @@ export class AuthPage implements OnInit {
         this.utilservice.presentToast({
           message:`Bienvenido ${user.name}`,
           duration: 2500,
-          color: 'primary',
+          color: 'secondary',
           position: 'middle',
           icon:'happy-outline'
 

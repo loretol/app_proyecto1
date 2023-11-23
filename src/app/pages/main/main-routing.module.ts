@@ -15,10 +15,19 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
-      }
+      },
+      {
+        path: 'cod-qr',
+        loadChildren: () => import('./cod-qr/cod-qr.module').then( m => m.CodQrPageModule)
+      },
+      {
+        path: 'location',
+        loadChildren: () => import('./location/location.module').then( m => m.LocationPageModule)
+      },
 
     ]
   },
+  
 
 ];
 
