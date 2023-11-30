@@ -51,13 +51,13 @@ export class AddUpdateProductComponent implements OnInit {
       else this.createProduct();
     }
   }
-// ====== convertir valores de tipo string a number ======
-setNumberInput(){
-  let {soldUnits, price} = this.form.controls;
+  // ====== convertir valores de tipo string a number ======
+  setNumberInput() {
+    let { soldUnits, price } = this.form.controls;
 
-  if(soldUnits.value) soldUnits.setValue(parseFloat(soldUnits.value));
-  if(price.value) price.setValue(parseFloat(price.value));
-}
+    if (soldUnits.value) soldUnits.setValue(parseFloat(soldUnits.value));
+    if (price.value) price.setValue(parseFloat(price.value));
+  }
 
 
 
@@ -73,28 +73,31 @@ setNumberInput(){
     let imagepath = `${this.user.uid}/${Date.now()}`;
     let imageUrl = await this.firebaseService.uploadImage(imagepath, dataUrl);
     this.form.controls.image.setValue(imageUrl);
-    
+
     delete this.form.value.id
 
     this.firebaseService.addDocument(path, this.form.value).then(async res => {
-      
-      this.utilservice.dismissModal({ success: true });
 
-      this.utilservice.presentToast({
-        message: 'producto agregado ',
-        duration: 2500,
-        color: 'success',
-        position: 'middle',
-        icon: 'checkmark-circle-outline'
-      })
-    })
-    this.firebaseService.singnUp(this.form.value as User)
+      this.utilservice.dismissModal({ success: true });
+      
+      this.firebaseService.singnUp(this.form.value as User)
       .then(async res => {
         await this.firebaseService.updateUser(this.form.value.name);
 
         let uid = res.user.uid;
 
       })
+      
+
+      this.utilservice.presentToast({
+        message: 'Producto Agregado con Éxito ',
+        duration: 2500,
+        color: 'success',
+        position: 'middle',
+        icon: 'checkmark-circle-outline'
+      })
+    })
+   
       .catch(error => {
         console.log(error);
         this.utilservice.presentToast({
@@ -131,7 +134,7 @@ setNumberInput(){
       this.utilservice.dismissModal({ success: true });
 
       this.utilservice.presentToast({
-        message: 'producto actualizado ',
+        message: 'Producto Actualizado con Éxito ',
         duration: 2500,
         color: 'success',
         position: 'middle',

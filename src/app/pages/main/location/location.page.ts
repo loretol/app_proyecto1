@@ -2,20 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Marker } from 'src/app/models/marker.model';
 
 
- declare var google;
+
+declare var google;
 @Component({
   selector: 'app-location',
   templateUrl: './location.page.html',
   styleUrls: ['./location.page.scss'],
 })
 export class LocationPage implements OnInit {
+  
   map = null;
 
   constructor() { }
   
+  ngOnInit(){
+    this.loadMap();
+    
+  }
+
+  
 
 
-  loadMap(){
+  async loadMap(){
     const mapEle: HTMLElement =document.getElementById('map');
 
     const myLatLng= {lat:-33.532315367216306,lng:-70.5571344932541}
@@ -39,11 +47,6 @@ export class LocationPage implements OnInit {
 
   }
   
-
-  ngOnInit() {
-    this.loadMap();
-  }
-
   addMarker(marker:Marker){
     return new google.maps.Marker({
       position: marker.position,
@@ -52,5 +55,6 @@ export class LocationPage implements OnInit {
     });
 
   }
+ 
 
 }

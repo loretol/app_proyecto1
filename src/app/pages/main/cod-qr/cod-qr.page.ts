@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cod-qr.page.scss'],
 })
 export class CodQrPage implements OnInit {
-  cod:any;
+  cod: string = null;
 
-  constructor() { }
+
+  constructor() { 
+    this.cod='https://instagram.com/loretoloyola83?igshid=YTQwZjQ0NmI0OA==';
+  }
 
   ngOnInit() {
   }

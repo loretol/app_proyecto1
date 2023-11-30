@@ -18,6 +18,7 @@ export class MainPage implements OnInit {
     {title:'Perfil', url: '/main/profile', icon: 'person-outline'},
     {title:'Ubicación', url: '/main/location', icon: 'location-outline'},
     {title:'Codigo QR', url: '/main/cod-qr', icon: 'qr-code-outline'},
+    {title:'Comentarios', url: '/main/list-user', icon: 'document-text-outline'},
   ]
   currentPath: string = '';
 

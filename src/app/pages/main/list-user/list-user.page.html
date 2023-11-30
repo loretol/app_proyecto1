@@ -1,0 +1,30 @@
+<app-header [showMenu]="true" title="Comentarios"></app-header>
+
+
+
+<ion-content  class="ion-padding-top ion-text-center">
+ 
+  <h2>Déjanos tu comentarios </h2>
+  <div>Así como todos nuestros clientes</div>
+
+
+  <ion-card mode="ios" style="--background: rgb(252, 227, 167);" class="d-flex-center ion-text-center" *ngFor="let item of data">
+    <div>
+      <h5>{{ item.nombre }} {{ item.apellido }}</h5>
+      <p>Comentario </p>
+      <h5>{{ item.coment }}</h5>
+      
+    </div>
+    <div *ngIf="!data || data.length === 0">No hay datos disponibles.</div>
+
+    
+   
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addUpdateComentario()" style="--background: rgb(48, 174, 179);  --background-activated-opacity:rgb(17, 119, 123);
+    --background-focused :rgb(17, 119, 123);">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

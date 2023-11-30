@@ -119,7 +119,7 @@ getProfits(){
       this.products = this.products.filter(p => p.id !== product.id);
 
       this.utilservice.presentToast({
-        message: 'producto Eliminado ',
+        message: 'Producto Eliminado con Éxito ',
         duration: 2500,
         color: 'success',
         position: 'middle',

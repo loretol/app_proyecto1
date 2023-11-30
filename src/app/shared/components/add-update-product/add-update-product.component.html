@@ -21,10 +21,11 @@
 
     <!--=========nombre=========-->
     <app-custom-input
-     autocomplete="name" 
+     
      [control]="form.controls.name" 
      type="text"
      label="Nombre"
+     placeholder="ingrese el Nombre "
      ></app-custom-input>
 
 
@@ -40,6 +41,7 @@
     type="number" 
     label="Precio"
     (ionInput)="setNumberInput()"
+    placeholder="ingrese el precio "
     ></app-custom-input>
 
 
@@ -53,6 +55,7 @@
     type="number" 
     label="Unidad Vendidas"
     (ionInput)="setNumberInput()"
+    placeholder="ingrese unidades vendidas "
     ></app-custom-input>
 
 
