@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainPage } from './main.page';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 describe('MainPage', () => {
   let component: MainPage;
   let fixture: ComponentFixture<MainPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(MainPage);
+    
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -15,7 +17,3 @@ describe('MainPage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-function async(arg0: () => void): jasmine.ImplementationCallback {
-  throw new Error('Function not implemented.');
-}

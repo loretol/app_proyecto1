@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -16,7 +16,8 @@ import { AddUpdateComentarioComponent } from './components/add-update-comentario
     CustomInputComponent,
     LogoComponent,
     AddUpdateProductComponent,
-    AddUpdateComentarioComponent],
+    AddUpdateComentarioComponent,],
+    
   exports:[
     HeaderComponent,
     CustomInputComponent,

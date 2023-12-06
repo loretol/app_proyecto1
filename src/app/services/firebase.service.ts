@@ -27,7 +27,7 @@ export class FirebaseService {
   userArray: User[] =[];
 
   constructor(private firestore: Firestore, private auth: Auth,
-    private utilservice: UtilsService, private storage: Storage = inject(Storage),private http: HttpClient) {
+    private utilservice: UtilsService, private storage: Storage ,private http: HttpClient) {
 
 
 

@@ -5,7 +5,7 @@ describe('ListUserPage', () => {
   let component: ListUserPage;
   let fixture: ComponentFixture<ListUserPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(ListUserPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -15,7 +15,3 @@ describe('ListUserPage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-function async(arg0: () => void): jasmine.ImplementationCallback {
-  throw new Error('Function not implemented.');
-}

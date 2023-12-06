@@ -11,10 +11,7 @@ const routes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full'
   },
-  {
-    path: 'splash',
-    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
-  },
+  
   {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule),canActivate:[NoAuthGuard]

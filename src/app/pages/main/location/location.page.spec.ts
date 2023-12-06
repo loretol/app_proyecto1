@@ -5,7 +5,7 @@ describe('LocationPage', () => {
   let component: LocationPage;
   let fixture: ComponentFixture<LocationPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(LocationPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -15,7 +15,3 @@ describe('LocationPage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-function async(arg0: () => void): jasmine.ImplementationCallback {
-  throw new Error('Function not implemented.');
-}

@@ -20,6 +20,20 @@ data: any[] =[];
  
   constructor(private firebaseService: FirebaseService, private utilservice: UtilsService) {}
 
+
+
+  ionViewWillEnter() {
+    this.getComentarios();
+  }
+
+doRefresh(event) {
+  setTimeout(() => {
+    this.getComentarios();
+    event.target.complete();
+  }, 1000);
+}
+
+
   async addUpdateComentario(comentario?: Comentario) {
     let succes = await this.utilservice.presentModal({
       component: AddUpdateComentarioComponent,
@@ -32,16 +46,7 @@ data: any[] =[];
   }
   
   
-  ionViewWillEnter() {
-    this.getComentarios();
-  }
-
-doRefresh(event) {
-  setTimeout(() => {
-    this.getComentarios();
-    event.target.complete();
-  }, 1000);
-}
+  
 
 ngOnInit() {
   

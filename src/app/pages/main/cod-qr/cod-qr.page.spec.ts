@@ -5,7 +5,7 @@ describe('CodQrPage', () => {
   let component: CodQrPage;
   let fixture: ComponentFixture<CodQrPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(CodQrPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -15,7 +15,3 @@ describe('CodQrPage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-function async(arg0: () => void): jasmine.ImplementationCallback {
-  throw new Error('Function not implemented.');
-}

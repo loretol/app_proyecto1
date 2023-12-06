@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl,ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input',
