@@ -11,11 +11,11 @@ import { provideFirestore,getFirestore, Firestore } from '@angular/fire/firestor
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { GoogleMap } from '@capacitor/google-maps';
-import { CapacitorGoogleMaps } from '@capacitor-community/google-maps';
+
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { HttpClientModule } from '@angular/common/http';
-import { FirebaseService } from './services/firebase.service';
+
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -46,7 +46,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     
     ],
     
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FirebaseService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

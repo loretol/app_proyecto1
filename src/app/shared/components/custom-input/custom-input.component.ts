@@ -12,6 +12,7 @@ export class CustomInputComponent  implements OnInit {
   @Input() label!:string;
   @Input() autocomplete!: string;
   @Input() icon!:string;
+  @Input() id: string = '';
 
  // para decir si la contraseña va estar o no oculta
   ispassword!:boolean;
