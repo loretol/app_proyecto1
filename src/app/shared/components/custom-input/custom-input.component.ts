@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl,ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input',
@@ -12,7 +12,7 @@ export class CustomInputComponent  implements OnInit {
   @Input() label!:string;
   @Input() autocomplete!: string;
   @Input() icon!:string;
-  @Input() id: string = '';
+  @Input() placeholder!:string;
 
  // para decir si la contraseña va estar o no oculta
   ispassword!:boolean;

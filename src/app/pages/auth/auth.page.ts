@@ -13,9 +13,8 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
-  showPassword = false;
 
-  formAuth= new FormGroup({
+  form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
 
@@ -28,17 +27,13 @@ export class AuthPage implements OnInit {
   ngOnInit() {
   }
 
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-  }
-
   async submit() {
-    if (this.formAuth.valid){
+    if (this.form.valid){
 
       const loading = await this.utilservice.loading();
       await loading.present();
 
-      this.firebaseService.signIn(this.formAuth.value as User)
+      this.firebaseService.signIn(this.form.value as User)
       .then(res =>{
 
         this.getUserInfo(res.user.uid);
@@ -62,7 +57,7 @@ export class AuthPage implements OnInit {
 
 
   async getUserInfo(uid: string) {
-    if (this.formAuth.valid){
+    if (this.form.valid){
 
       const loading = await this.utilservice.loading();
       await loading.present();
@@ -75,7 +70,7 @@ export class AuthPage implements OnInit {
 
         this.utilservice.saveInLocalStorage('user',user)
         this.utilservice.routerLink('/main/home');
-        this.formAuth.reset();
+        this.form.reset();
 
         this.utilservice.presentToast({
           message:`Bienvenido ${user.name}`,

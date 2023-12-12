@@ -16,8 +16,7 @@ import { AddUpdateComentarioComponent } from './components/add-update-comentario
     CustomInputComponent,
     LogoComponent,
     AddUpdateProductComponent,
-    AddUpdateComentarioComponent,],
-    
+    AddUpdateComentarioComponent],
   exports:[
     HeaderComponent,
     CustomInputComponent,
