@@ -19,6 +19,12 @@ export class LocationPage implements OnInit {
     this.loadMap();
     
   }
+  doRefresh(event) {
+    setTimeout(() => {
+      this.loadMap();
+      event.target.complete();
+    }, 1000);
+  }
 
   
 

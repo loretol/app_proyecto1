@@ -40,9 +40,11 @@ export class AddUpdateComentarioComponent implements OnInit {
       }
     }
 
-    agregarComentario() {
+   agregarComentario() {
       if (this.form.valid) {
+        
         const nuevoComentario: Comentario = {
+          
           nombre: this.form.value.nombre,
           apellido: this.form.value.apellido,
           coment:this.form.value.coment,
@@ -51,16 +53,32 @@ export class AddUpdateComentarioComponent implements OnInit {
         this.firebaseService.postData(nuevoComentario).subscribe(
           (response) => {
             console.log('Comentario agregado exitosamente', response);
-            // Realiza acciones adicionales si es necesario
-            this.utilservice.routerLink('/main/list-user');
+            
+            this.utilservice.routerLink('/main/home');
+            this.utilservice.presentToast({
+              message: 'comentario Agregado con Éxito ',
+              duration: 2500,
+              color: 'success',
+              position: 'middle',
+              icon: 'checkmark-circle-outline'
+            })
             this.form.reset();
           },
           (error) => {
-            console.error('Error al agregar el comentario', error);
-            // Maneja el error según tus necesidades
+            this.utilservice.presentToast({
+              message:'error al agregar comentario',
+              duration: 2500,
+              color: 'primary',
+              position: 'middle',
+              icon: 'alert-circle-outline'
+            })
           }
         );
       }
+      
+
+
+      
     }
   
  

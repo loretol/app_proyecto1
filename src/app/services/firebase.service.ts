@@ -12,11 +12,6 @@ import { Product } from 'src/app/models/products.model';
 import { HttpClient } from '@angular/common/http';
 import { Comentario } from '../models/cometario.model';
 
-
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
